@@ -1,0 +1,85 @@
+<!-- <div class="container w-50 p-5 mt-5">
+  <form class="mx-1 mx-md-4 w-100" [formGroup]='loginForm' (ngSubmit)="submitLoginForm(loginForm)">
+
+        <div class="form-outline mb-4">
+          <input type="email" id="form2Example1" class="form-control" />
+          <label class="form-label" for="form2Example1">Email address</label>
+        </div>
+
+
+        <div class="form-outline mb-4">
+          <input type="password" id="form2Example2" class="form-control" />
+          <label class="form-label" for="form2Example2">Password</label>
+        </div>
+
+
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-center">
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+              <label class="form-check-label" for="form2Example31"> Remember me </label>
+            </div>
+          </div>
+
+          <div class="col">
+
+            <a href="#!">Forgot password?</a>
+          </div>
+        </div>
+
+
+        <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+
+        <div class="text-center">
+          <p>Not a member? <a href="#!">Register</a></p>
+          <p>or sign up with:</p>
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-google"></i>
+          </button>
+
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-twitter"></i>
+          </button>
+
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
+      </form>
+</div> -->
+
+<!-- Reactive Forms -->
+<h1>Login</h1>
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="submitData()">
+    {{loginForm.value | json}}
+    <br><br>
+    <div class="from-group">
+      <label>Email :</label>
+      <input type="email" name="email" formControlName="email" class="form-control">
+      <div *ngIf="email?.errors && email?.touched">
+        <small class="text-danger" *ngIf="email?.errors?.['required']">email is required</small>
+        <small class="text-danger" *ngIf="email?.errors?.['pattern']">Email must be in the format user@domain.com</small>
+      </div>
+    </div>
+    <br><br>
+    <div class="from-group">
+      <label>Password :</label>
+      <input type="password" name="password" formControlName="password" class="form-control">
+      <div *ngIf="password?.errors && password?.touched">
+        <small class="text-danger" *ngIf="password?.errors?.['required']">password is required</small>
+        <small class="text-danger" *ngIf="password?.errors?.['pattern']">password must be in the format pattern</small>
+      </div>
+    </div>
+    <br><br>
+    <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
+  </form>
+</div>
+<br><br>
+

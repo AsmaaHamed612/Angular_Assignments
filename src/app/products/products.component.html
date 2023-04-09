@@ -1,0 +1,209 @@
+
+<nav class="sub-header">
+
+  <!-- property binding -->
+  <a>
+    <img  [src]="StoreLogo"    width="50" height="50" >
+  </a>
+
+  <!-- angular expression -->
+  <h1>{{StoreName | uppercase}}</h1>
+
+  <!-- angular expression -->
+
+<!-- Question 1 -->
+
+<div [ngSwitch]="Discount" >
+<div *ngSwitchCase="'No Discount'"></div>
+<div *ngSwitchDefault>
+  <h3 >{{"We offer an explicit discount of:"+"  "+Discount | percent}}</h3>
+</div>
+</div>
+
+<div class="dropdown">
+<select class="btn btn-primary dropdown-toggle">
+<option>Categories</option>
+  <option *ngFor="let category of CategoryList " [value]="category.ID" >
+      {{category.Name}}
+  </option>
+</select>
+</div>
+  </nav>
+
+ <div class="container">
+  <div class="card-group">
+      <div class="row">
+          <div class="card col-md-4">
+              <img class="card-img-top" src="/assets/image6.jpg"/>
+              <div class="card-body">
+                  <h3 class="card-title">Playstation</h3>
+                  <p class="card-text">Playing Games</p>
+              </div>
+          </div>
+
+          <div class="card col-md-4">
+              <img class="card-img-top" src="/assets/image7.jpg">
+
+              <div class="card-body">
+                  <h3 class="card-title text-primary">AirBodes</h3>
+                  <p class="card-text">Sudo Placement Course</p>
+              </div>
+          </div>
+
+          <div class="card col-md-4">
+              <img class="card-img-top" src="/assets/image8.jpg">
+
+              <div class="card-body">
+                  <h3 class="card-title">LapTop</h3>
+                  <p class="card-text">DS & Algo Course</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="card col-md-4">
+            <img class="card-img-top" src="/assets/image5.jpg"/>
+            <div class="card-body">
+                <h3 class="card-title">HeadPhone</h3>
+                <p class="card-text">JavaScript | Python</p>
+            </div>
+        </div>
+
+        <div class="card col-md-4">
+            <img class="card-img-top" src="/assets/image2.jpg">
+
+            <div class="card-body">
+                <h3 class="card-title text-primary">HeadPhone</h3>
+                <p class="card-text">Sudo Placement Course</p>
+            </div>
+        </div>
+
+        <div class="card col-md-4">
+            <img class="card-img-top" src="/assets/image4.jpg">
+
+            <div class="card-body">
+                <h3 class="card-title">Camera</h3>
+                <p class="card-text">DS & Algo Course</p>
+            </div>
+        </div>
+
+
+    </div>
+  </div>
+
+<!-- Question 3  -->
+
+
+  <div class="showprodcts"  *ngIf="ishide">
+    <h1>Our Products</h1>
+
+    <!-- <app-child (childEvent)="getData($event)" ></app-child> -->
+    <button type="button" (click)="renderValue()"  class="btn btn-success">GetAllProduct</button>
+
+
+    <table class="table table-sm"  >
+  <thead>
+    <tr class="bg-warning">
+
+      <th scope="col">Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Image</th>
+      <th scope="col">Purshased</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of ProductList ">
+
+
+      <td>{{product.Name}}</td>
+      <td>{{product.Quantity}}</td>
+      <td>{{product.Price}}</td>
+      <td><img [src]="product.Image" width="50"></td>
+      <td><button type="button" (click)="toggle()"  (click)="hide()" class="btn btn-success">Buy</button></td>
+    </tr>
+
+  </tbody>
+</table>
+
+</div>
+
+ <!-- Question 5 -->
+
+
+ <div class="showprodcts" *ngIf="IsPurshased" >
+  <h1 style="color: green;">{{"Thanks for purchasing from our Store"+"  "+ClientName}}</h1>
+    </div>
+
+<!-- QQQQQQQQQQQQQQQQQQQ -->
+
+<h3 style="text-align: center;">Display Product Using ID</h3>
+    <form (submit)="getProductById()">
+      <div class="mb-3" style="text-align: center;">
+        <label for="exampleInputEmail1" class="form-label" >Id OfProduct</label>
+        <input type="number" class="form-control" name="productId" [(ngModel)]="productId" placeholder="Enter your Id">
+      </div>
+      <div style="text-align: center;">
+        <button type="submit" class="btn btn-primary">See Product</button>
+      </div>
+    </form>
+
+    <div *ngIf="selectProduct" style="text-align: center;">
+      <h3>{{selectProduct.Name}}</h3>
+      <p>price:{{selectProduct.Price}}</p>
+      <img src={{selectProduct.Image}} style="width: 100px; display: block;  margin-left: auto;
+      margin-right: auto;">
+    </div><br>
+
+
+    <div class="ms-5 mt-5 mb-5 d-flex justify-content-center" >
+      <button class="btn btn-primary mr-5" (click)="WithDiscount()" >Discount</button>
+      <button class="btn btn-primary ms-5" (click)="WithoutDiscount()">No discounts</button>
+      </div>
+      <router-outlet></router-outlet>
+
+
+    <!-- qqqqqqqqqqqqqq -->
+
+
+
+
+
+<!-- Question 4 -->
+
+<!-- <div class="card1 text-center">
+  <div class="card-body1">
+    <h5 class="card-title">GET IN TOUCH
+      <hr>
+    </h5>
+    <p class="card-text">In ante metus dictum at tempor commodo ullamcorper a lacus. Eget aliquet nibh praesent
+      tristique.</p>
+  </div>
+</div>
+
+<div class="card2 mb-3" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/assets/imageC.jpg" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body1">
+        <input class="info txt1" type="text" [(ngModel)]="ClientName" placeholder="Name *">
+        {{ClientName}}
+        <input class="info txt3" type="text" placeholder="Email *">
+        <input class="info txt4" type="text" placeholder="Phone *">
+        <input class="info txt5-info" type="text" placeholder="Message">
+        <button class="btn1">SEND MESSAGE</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+</div>
+

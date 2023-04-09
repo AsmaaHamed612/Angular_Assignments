@@ -1,0 +1,22 @@
+<!-- <div class="card3 text-center col-lg-12 mt-4 ms-5" style="display: inline-block; box-shadow: 0 3px 3px; color: bisque;" *ngFor="let item of PostsList">
+  <div class="card3-header" >
+  {{item.id}}
+  </div>
+  <div class="card3-body" style="color:">
+  <h5 class="card3-title"><span style="font-weight: bolder; color: darkblue;">{{item.title}}</span> </h5>
+  <p class="card3-text">{{item.body}}</p>
+  <button class="btn btn-primary" (click)="selectedPost(item)">view post</button>
+  </div>
+  <div class="card3-footer text-muted ">
+
+  </div>
+</div> -->
+
+<div class="card text-center col-lg-3 mt-2 ms-3 " *ngFor="let item of PostsList">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{item.id}}</li>
+    <li class="list-group-item" style="color: blue;">{{item.title}}</li>
+    <li class="list-group-item">{{item.body}}</li>
+    <li> <button class="btn btn-primary" (click)="selectedPost(item)">view post</button></li>
+  </ul>
+</div>

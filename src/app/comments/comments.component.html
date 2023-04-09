@@ -1,0 +1,21 @@
+<!-- <div class="card text-center col-lg-11 mt-4 ms-5" style="display: inline-block; box-shadow: 0 3px 3px rgba(0,0,0,0.2);" *ngFor="let item of CommentList">
+  <div class="card-header" >
+  {{item.id}}
+  </div>
+  <div class="card-body">
+  <h5 class="card-title"><span style="font-weight: bolder; color: darkblue;">{{item.body}}</span> </h5>
+  <p class="card-text"></p>
+  </div>
+  <div class="card-footer text-muted ">
+
+  </div>
+</div> -->
+
+<div class="card text-center col-lg-12 mt-2 ms-3 " *ngFor="let item of CommentList">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{item.id}}</li>
+
+    <li class="list-group-item" style="color: blue;">{{item.body}}</li>
+
+  </ul>
+</div>
